@@ -50,12 +50,13 @@
 
 # Modules
 <hr>
-<li>Login Logout User authentication
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li> Login Logout User authentication</li>
+<li> Admin module </li>
+<li> Bill module</li>
+<li> Order module</li>
+<li> customer module</li>
+<li> Restaurant module</li>
+<li> Food cart  module</li>
 
 <br>
 <br>
