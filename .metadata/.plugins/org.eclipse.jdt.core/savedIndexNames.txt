@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\bubai\Desktop\projects\lawful-robin-2026\.metadata\.plugins\org.eclipse.jdt.core
+3846475076.index
+444309628.index
+1865797976.index
