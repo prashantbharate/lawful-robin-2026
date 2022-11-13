@@ -1,7 +1,7 @@
 # Wallet_Payment_Application
 <hr>
-<li>An Collabrative Project Consisting Of the 5 Developer Depicting the implementation of theOnline Food Booking application platform
-<li>An developement of RESTful API for an Online Payment Wallet application. This API performs all the fundamental CRUD operations of any Online Wallet Banking platform with user validation at every step.
+<li> An Collabrative Project Consisting Of the 5 Developer Depicting the implementation of the Online Food Booking application platform
+<li> We have developed this REST API for an Online Food Booking application . This API performs all the fundamental CRUD operations of anyFood Booking platform with user validation at every step.
 <br>
 
 
