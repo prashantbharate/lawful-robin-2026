@@ -22,7 +22,6 @@ The following Diagram depicts the flow of our Entity Relation Diagram to simplif
   
 <hr>
 <br>
-<br>
 
 1) Prashant - Team Lead, Responsible for creating and implementing the ER diagram and flow of the project.
 
