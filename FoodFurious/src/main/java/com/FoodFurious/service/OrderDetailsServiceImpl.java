@@ -21,8 +21,8 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	
 	@Override
 	public OrderDetails addOrder(OrderDetails order) {
-		OrderDetails neworder=oRepo.save(order);	
-		return neworder;
+		OrderDetails n=oRepo.save(order);	
+		return n;
 	}
 
 	@Override

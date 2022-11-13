@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.FoodFurious.exceptions.orderException;
 import com.FoodFurious.models.OrderDetails;
 import com.FoodFurious.repository.OrderDetailsRepo;
 import com.FoodFurious.service.OrderDetailsService;
 
-
+@RestController
 public class OrderDetailsController {
 	
 	private OrderDetailsService oservice;
 	
 	@PostMapping("/Orders")
-	public ResponseEntity<OrderDetails> CreateOrder(@Valid @RequestBody OrderDetails order){
+	public ResponseEntity<OrderDetails> CreateOrder(@RequestBody OrderDetails order){
 		
 	OrderDetails newOrder=	oservice.addOrder(order);
 		
