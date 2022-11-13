@@ -11,9 +11,9 @@ The following Diagram depicts the flow of our Entity Relation Diagram to simplif
   
 ![er ](https://user-images.githubusercontent.com/66555692/201535145-b2083ac4-87a7-4e88-ac60-cba518df69fb.jpg)
 
+
+  [FoodFuriouse Delivery (3).pdf](https://github.com/prashantbharate/lawful-robin-2026/files/9997852/FoodFuriouse.Delivery.3.pdf)
   
-<br>
-[FoodFuriouse Delivery (3).pdf](https://github.com/prashantbharate/lawful-robin-2026/files/9997846/FoodFuriouse.Delivery.3.pdf)
 <br>
 <br>
 <hr>
