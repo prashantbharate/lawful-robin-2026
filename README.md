@@ -1,4 +1,4 @@
-# Wallet_Payment_Application
+# Online food_Delivery_Application
 <hr>
 <li> An Collabrative Project Consisting Of the 5 Developer Depicting the implementation of the Online Food Booking application platform
 <li> We have developed this REST API for an Online Food Booking application . This API performs all the fundamental CRUD operations of anyFood Booking platform with user validation at every step.
