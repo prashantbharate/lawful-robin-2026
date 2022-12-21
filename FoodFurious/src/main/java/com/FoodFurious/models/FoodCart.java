@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +26,7 @@ public class FoodCart {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Customer customer;
 
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<Item> items;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Item> items;
 
 }

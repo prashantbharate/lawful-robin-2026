@@ -16,43 +16,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.FoodFurious.exceptions.orderException;
 import com.FoodFurious.models.OrderDetails;
 import com.FoodFurious.repository.OrderDetailsRepo;
-import com.FoodFurious.service.OrderDetailsService;
-
+import com.FoodFurious.service.OrderService;
 
 public class OrderDetailsController {
-	
-	private OrderDetailsService oservice;
-	
+
+	private OrderService orderService;
+
 	@PostMapping("/Orders")
-	public ResponseEntity<OrderDetails> CreateOrder(@Valid @RequestBody OrderDetails order){
-		
-	OrderDetails newOrder=	oservice.addOrder(order);
-		
-	
-		return new ResponseEntity<OrderDetails>(newOrder,HttpStatus.CREATED);
-	}
-	
-	@DeleteMapping("/Orders/{id}")
-	public ResponseEntity<OrderDetails> DeleteOrder(@PathVariable("id") Integer orderid ) throws orderException{
-		
-		OrderDetails order=oservice.removeOrder(orderid);
-		
-		return new ResponseEntity<OrderDetails>(order,HttpStatus.OK);
-	}
-	
-	@PutMapping("/Orders")
-	public ResponseEntity<OrderDetails> Update(@RequestBody OrderDetails Order) throws orderException{
-		
-		OrderDetails updatedorder=oservice.updateOrder(Order);
-		
-		return new ResponseEntity<OrderDetails>(updatedorder,HttpStatus.ACCEPTED);
+	public ResponseEntity<OrderDetails> CreateOrder(@Valid @RequestBody OrderDetails order) {
+
+		OrderDetails newOrder = orderService.addOrderDetails(order);
+
+		return new ResponseEntity<OrderDetails>(newOrder, HttpStatus.CREATED);
 	}
 
-	@GetMapping("/Bill/{id}")
-	public ResponseEntity<OrderDetails> viewOrder(@PathVariable ("id") Integer Oid) throws orderException{
-		
-		OrderDetails order=oservice.viewOrder(Oid);
-		return new ResponseEntity<OrderDetails>(order,HttpStatus.OK);
+	@DeleteMapping("/Orders/{id}")
+	public ResponseEntity<OrderDetails> DeleteOrder(@PathVariable("id") Integer orderid) throws orderException {
+
+		OrderDetails order = orderService.removeOrderDetails(orderid);
+
+		return new ResponseEntity<OrderDetails>(order, HttpStatus.OK);
+	}
+
+	@PutMapping("/Orders")
+	public ResponseEntity<OrderDetails> Update(@RequestBody OrderDetails Order) throws orderException {
+
+		OrderDetails updatedorder = orderService.updateOrderDetails(Order);
+
+		return new ResponseEntity<OrderDetails>(updatedorder, HttpStatus.ACCEPTED);
+	}
+
+	@GetMapping("/order/{orderId}")
+	public ResponseEntity<OrderDetails> viewOrder(@PathVariable("orderId") Integer orderId) throws orderException {
+
+		OrderDetails order = orderService.viewOrderDetails(orderId);
+		return new ResponseEntity<OrderDetails>(order, HttpStatus.OK);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.FoodFurious.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -24,72 +25,48 @@ import com.FoodFurious.service.BillService;
 
 @RestController
 public class BillController {
-	
 
-	
 	@Autowired
-	private BillService bService;
-	
+	private BillService billService;
+
 	@PostMapping("/BillGenrate")
 	public ResponseEntity<String> CreateBill(@RequestBody Bill bill) {
-		Bill SavedBill=bService.addBill(bill);
-		
+		Bill SavedBill = billService.addBill(bill);
 
-		
-		return new ResponseEntity<String>( "Bill Genrated "+bill.getBillId(),HttpStatus.CREATED);
-		
-	}
-	
-	@GetMapping("/BillGenrate/{id}")
-	public ResponseEntity<Bill> ViewBill(@PathVariable ("id") Integer billId) throws BillException {
-		Bill bill=bService.viewBill(billId);
-		
-		return new ResponseEntity<Bill>( bill,HttpStatus.CREATED);
-		
-	}
-	
-//	@GetMapping("/Bill")
-//	public ResponseEntity<Double> TotalCost(Bill bill){
-//	List<Item> items=	bill.getOrderDetails().getFoodCart().getItems();
-//	
-//	Double sum=0.00;
-//	
-//	for(Item i : items) {
-//		sum+=i.getCost();
-//	}
-//	return new ResponseEntity<Double>(sum,HttpStatus.OK);
-//	}
-//	
-	
-	
-	
-	@DeleteMapping("/Bill/{id}")
-	public ResponseEntity<Bill> Remove(@PathVariable ("id") Integer billId) throws BillException{
-		
-		Bill bill=bService.remove(billId);
-		return new ResponseEntity<Bill>(bill , HttpStatus.OK);
-			
+		return new ResponseEntity<String>("Bill Genrated " + bill.getBillId(), HttpStatus.CREATED);
+
 	}
 
-//	@GetMapping("/Bills/{id}")
-//	public ResponseEntity<List<Bill>> getAllBill(@PathVariable ("id") String Custid)throws BillException {
-//		List <Bill> bills=bService.viewBills( Custid);
-//		return new ResponseEntity<List<Bill>>(bills,HttpStatus.OK);
-//	}
+	@GetMapping("/BillGenrate/{billId}")
+	public ResponseEntity<Bill> ViewBill(@PathVariable("billId") Integer billId) throws BillException {
+		Bill bill = billService.viewBill(billId);
 
-	
+		return new ResponseEntity<Bill>(bill, HttpStatus.CREATED);
+
+	}
+
+	@DeleteMapping("/Bill/{billId}")
+	public ResponseEntity<Bill> Remove(@PathVariable("billId") Integer billId) throws BillException {
+
+		Bill bill = billService.removeBill(billId);
+		return new ResponseEntity<Bill>(bill, HttpStatus.OK);
+
+	}
+
 	@PutMapping("/Bills")
-	public ResponseEntity<Bill> updateBill(@RequestBody Bill Bill)throws BillException{
-		
-		Bill UpdatedBill=bService.update(Bill);
-		
-		return new ResponseEntity<Bill>(UpdatedBill,HttpStatus.ACCEPTED);
+	public ResponseEntity<Bill> updateBill(@RequestBody Bill Bill) throws BillException {
+
+		Bill UpdatedBill = billService.updateBill(Bill);
+		return new ResponseEntity<Bill>(UpdatedBill, HttpStatus.ACCEPTED);
 	}
-	@GetMapping("/Bills/{s}/{e}")
+
+	@GetMapping("/Bills/{startDate}/{endDate}")
 	@ResponseBody
-	public ResponseEntity<List<Bill>> ViewBillByDate(@PathVariable ("s") String s, @PathVariable ("e") String e) throws BillException{
-		List<Bill> bills=bService.viewBills(s, e);
-		
-		return new ResponseEntity<List<Bill>>(bills,HttpStatus.CREATED);
+	public ResponseEntity<List<Bill>> ViewBillByDate(@PathVariable("startDate") String startDate,
+			@PathVariable("endDate") String endDate) throws BillException {
+
+		List<Bill> bills = billService.viewBills(LocalDate.parse(startDate), LocalDate.parse(endDate));
+
+		return new ResponseEntity<List<Bill>>(bills, HttpStatus.CREATED);
 	}
 }
