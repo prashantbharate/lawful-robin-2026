@@ -2,82 +2,60 @@ package com.FoodFurious.service;
 
 import java.util.List;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.FoodFurious.exceptions.ItemException;
 import com.FoodFurious.models.Item;
-import com.FoodFurious.repository.ItemRepository;
+import com.FoodFurious.repository.ItemDAO;
 
 @Service
 public class ItemServiceImpl implements ItemService {
 
 	@Autowired
-	private ItemRepository ir;
+	private ItemDAO itemDAO;
 
 	@Override
-	public Item AddItems(Item item, Integer RestaurantId, Integer CatId) {
-		// TODO Auto-generated method stub
+	public Item addItems(Item item) {
 
-		return null;
+		Item savedItem = itemDAO.save(item);
+		return savedItem;
+
 	}
 
 	@Override
 	public List<Item> getAllItem() {
 		// TODO Auto-generated method stub
-
-		List<Item> lst = ir.findAll();
-		if (lst.size() > 0) {
-			return lst;
-		} else {
-			// throw new ItemException("Record not found");
-		}
 		return null;
-
 	}
 
 	@Override
-	public Item updateitem(Item item) {
-		// TODO Auto-generated method stub
+	public Item updateitem(Item item) throws ItemException {
 
-		Optional<Item> it = ir.findById(item.getItemId());
-
-		if (it.isPresent()) {
-			Item i = ir.save(item);
-			return i;
-		} else {
-			return null;
-		}
-
+		itemDAO.findById(item.getItemId()).orElseThrow(() -> new ItemException("item not found..."));
+		itemDAO.save(item);
+		return item;
 	}
 
 	@Override
-	public Item removeItem(Item item) {
+	public Item removeItem(Integer itemId) throws ItemException {
 		// TODO Auto-generated method stub
+		Item removeItem = itemDAO.findById(itemId).orElseThrow(() -> new ItemException("item not found..."));
+		itemDAO.deleteById(itemId);
 
-		Optional<Item> it = ir.findById(item.getItemId());
-
-		if (it.isPresent()) {
-			ir.delete(it.get());
-			return item;
-
-		} else {
-			return null;
-		}
+		return removeItem;
 	}
 
 	@Override
 	public Item getItemByName(String Iname) {
 		// TODO Auto-generated method stub
-
-		Optional<Item> it = ir.findByName(Iname);
-		if (it.isPresent()) {
-			Item i = it.get();
-		}
-
 		return null;
+	}
 
+	@Override
+	public Item viewItem(Integer itemId) throws ItemException {
+		Item existingItem = itemDAO.findById(itemId).orElseThrow(() -> new ItemException("Item not found..."));
+		return existingItem;
 	}
 
 }

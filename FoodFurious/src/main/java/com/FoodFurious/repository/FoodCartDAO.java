@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.FoodFurious.models.FoodCart;
 
-public interface FoodCartDao extends JpaRepository<FoodCart, Integer> {
+public interface FoodCartDAO extends JpaRepository<FoodCart, Integer> {
 
-	
-	
 }

@@ -1,6 +1,5 @@
 package com.FoodFurious.models;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +8,8 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
-
-@Entity
 @Data
-
+@Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +27,5 @@ public class Address {
 	private String country;
 	@NotNull
 	private String pincode;
-	
-	
 
 }

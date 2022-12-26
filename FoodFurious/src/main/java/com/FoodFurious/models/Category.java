@@ -16,15 +16,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Category {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer CatId;
-	
+	private Integer categoryId;
+
 	@NotNull
 	@NotBlank
 	@NotNull
-	@Size(min = 2,max = 20,message = "First name should be between 2s to 30 character.")
-	private String CatName;
-	
+	@Size(min = 2, max = 20, message = "First name should be between 2s to 30 character.")
+	private String categoryName;
+
 }

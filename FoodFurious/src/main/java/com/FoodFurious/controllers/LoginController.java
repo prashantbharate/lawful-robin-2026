@@ -14,6 +14,7 @@ import com.FoodFurious.models.CustomerDTO;
 import com.FoodFurious.service.AdminLogInServiceImpl;
 import com.FoodFurious.service.CustomerLoginServiceImpl;
 
+@RestController
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired

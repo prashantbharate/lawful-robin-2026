@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +38,7 @@ public class Item {
 
 	private Integer Cost;
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Restaurant> restuarant = new ArrayList<>();
 }

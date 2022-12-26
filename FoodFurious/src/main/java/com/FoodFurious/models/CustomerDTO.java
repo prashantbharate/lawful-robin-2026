@@ -12,8 +12,4 @@ public class CustomerDTO {
 	@NotNull(message = "Password is mandatory")
 	private String password;
 
-	private String customerName;
-	private String email;
-	private String address;
-
 }

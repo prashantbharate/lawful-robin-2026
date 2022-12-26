@@ -17,11 +17,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
-
-//import lombok.Data;
 
 @Entity
 @Data
@@ -37,13 +35,14 @@ public class Restaurant {
 
 	private String managerName;
 
-//	@Size(min = 10, max = 10, message = "contactNumber should be of 10 number length")
-	private Integer contactNumber;
+	@Size(min = 10, max = 10, message = "contactNumber should be of 10 number length")
+	private String contactNumber;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-	@ManyToMany
+	@JsonIgnore
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Item> itemList = new ArrayList<>();
 
 }

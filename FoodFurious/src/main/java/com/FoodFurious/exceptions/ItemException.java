@@ -8,8 +8,8 @@ public class ItemException extends Exception{
 		
 	}
 	
-	public ItemException(String msg)
+	public ItemException(String message)
 	{
-		super(msg);
+		super(message);
 	}
 }

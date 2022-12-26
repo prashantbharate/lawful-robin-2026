@@ -10,8 +10,10 @@ import com.FoodFurious.exceptions.CustomerException;
 import com.FoodFurious.models.CurrentCustomerSession;
 import com.FoodFurious.models.Customer;
 import com.FoodFurious.models.CustomerSigninDTO;
+import com.FoodFurious.models.FoodCart;
 import com.FoodFurious.repository.CustomerDao;
 import com.FoodFurious.repository.CustomerSessionDAO;
+import com.FoodFurious.repository.FoodCartDAO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,6 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerSessionDAO CustomerSessionDAO;
+
+	@Autowired
+	private FoodCartDAO foodCartDao;
 
 	@Override
 	public Customer createCustomer(CustomerSigninDTO customersigninDto) throws CustomerException {
@@ -40,10 +45,12 @@ public class CustomerServiceImpl implements CustomerService {
 		// add type
 		customer.setUserType("customer");
 
-		if (opt.isPresent()) {
-			System.out.println("User already exist");
-		}
-		return CustomerDao.save(customer);
+		Customer savedCustomer = CustomerDao.save(customer);
+		FoodCart foodCart = new FoodCart();
+		foodCart.setCustomer(savedCustomer);
+		foodCartDao.save(foodCart);
+		return savedCustomer;
+
 	}
 
 	@Override

@@ -3,7 +3,12 @@ package com.FoodFurious.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.FoodFurious.models.Bill;
+
+import io.swagger.v3.oas.annotations.servers.Server;
+
 
 public class BillServiceImpl implements BillService {
 
